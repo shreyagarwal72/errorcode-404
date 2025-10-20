@@ -1,0 +1,4 @@
+project_id = "qktwkbcwrbaypvvhlrdv"
+
+[functions.ghost-chat]
+verify_jwt = false
