@@ -86,8 +86,8 @@ export const puzzles: Puzzle[] = [
     title: "The Cursed Equation",
     description: "Break the mathematical hex.",
     type: "logic",
-    question: "If 2+3=10, 4+5=32, then 6+7=?",
-    answer: "72",
+    question: "If 2+3=12, 4+5=40, then 6+7=?",
+    answer: "84",
     hint: "Multiply first number by second, then by 2"
   },
   {
