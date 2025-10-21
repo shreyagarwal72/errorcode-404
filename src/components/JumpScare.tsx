@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Ghost, Skull, Eye, type LucideIcon } from 'lucide-react';
+import { Ghost, Skull, Eye, Flame, Zap, Moon, BrainCircuit, type LucideIcon } from 'lucide-react';
 
-const scareIcons: LucideIcon[] = [Ghost, Skull, Eye];
+const scareIcons: LucideIcon[] = [Ghost, Skull, Eye, Flame, Zap, Moon, BrainCircuit];
 
 export const JumpScare = () => {
   const [show, setShow] = useState(false);
@@ -21,8 +21,8 @@ export const JumpScare = () => {
       setTimeout(() => setShow(false), 800);
     };
 
-    const minTime = 30000; // 30 seconds minimum
-    const maxTime = 90000; // 90 seconds maximum
+    const minTime = 15000; // 15 seconds minimum
+    const maxTime = 45000; // 45 seconds maximum
     const randomDelay = Math.random() * (maxTime - minTime) + minTime;
 
     const timeout = setTimeout(triggerScare, randomDelay);
