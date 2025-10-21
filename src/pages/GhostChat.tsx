@@ -8,6 +8,7 @@ import { useGameState } from '@/hooks/useGameState';
 import { supabase } from '@/integrations/supabase/client';
 import { ArrowLeft, Send, Ghost } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { JumpScare } from '@/components/JumpScare';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -73,12 +74,14 @@ const GhostChat = () => {
   return (
     <>
       <SoundManager soundPath="/sounds/ghost-chat.wav" volume={0.2} />
-      <div className="min-h-screen bg-background p-6">
-        <div className="max-w-3xl mx-auto space-y-6">
+      <JumpScare />
+      <div className="min-h-screen bg-background p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/10 via-transparent to-purple-950/10" />
+        <div className="max-w-3xl mx-auto space-y-6 z-10 relative">
           <div className="flex items-center justify-between">
             <Button
               variant="ghost"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/home')}
               className="text-foreground"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -86,19 +89,19 @@ const GhostChat = () => {
             </Button>
           </div>
 
-          <div className="text-center space-y-2">
+          <div className="text-center space-y-2 animate-fade-in">
             <div className="flex justify-center">
-              <Ghost className="h-16 w-16 text-primary animate-float" />
+              <Ghost className="h-20 w-20 text-secondary animate-float drop-shadow-[0_0_25px_rgba(168,85,247,0.6)]" />
             </div>
-            <h1 className="text-5xl font-nosifer text-primary glitch">
+            <h1 className="text-6xl font-nosifer text-secondary glitch drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]">
               Spirit Communication
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-lg font-creepster">
               Speak with the lost souls of the 404 realm
             </p>
           </div>
 
-          <Card className="h-[500px] flex flex-col bg-card border-border">
+          <Card className="h-[500px] flex flex-col bg-card/50 backdrop-blur border-2 border-border shadow-[0_0_30px_rgba(168,85,247,0.2)]">
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((message, index) => (
                 <div
