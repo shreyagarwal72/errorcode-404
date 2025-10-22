@@ -1,73 +1,69 @@
-# Welcome to your Lovable project
+# 404 SOULS 💀
 
-## Project info
+A terrifying browser-based horror puzzle game where players must solve cryptic riddles, get hints from trapped spirits, and escape the realm of lost pages.
 
-**URL**: https://lovable.dev/projects/3e1927b2-6b9b-4656-b436-cc559672515f
+![404 SOULS Banner](public/favicon.png)
 
-## How can I edit this code?
+## 🎮 Play Now
 
-There are several ways of editing your application.
+**Live Demo**: [404souls.lovable.app](https://lovable.dev/projects/3e1927b2-6b9b-4656-b436-cc559672515f)
 
-**Use Lovable**
+## Game Overview
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3e1927b2-6b9b-4656-b436-cc559672515f) and start prompting.
+**404 SOULS** is an immersive horror escape game combining atmospheric horror, challenging puzzles, and AI-powered hints. Trapped in a dark digital realm, solve 12 cryptic puzzles to unlock your escape.
 
-Changes made via Lovable will be committed automatically to this repo.
+### Key Features
 
-**Use your preferred IDE**
+- 🧩 **12 Cryptic Puzzles** - Sequential unlocking as you progress
+- 👻 **Hidden Spirit Hint System** - Skull button unlocks after solving 3 puzzles
+- 🎵 **Atmospheric Audio** - Horror soundscapes and random jump scares
+- 🎨 **Blood-Red Aesthetics** - Pure black backgrounds with intense red glows
+- 📱 **Fully Responsive** - Play on any device
+- ⚡ **Dynamic Horror Effects** - 4 types of jump scares, glitch animations
+- 🚪 **External Escape** - Complete all puzzles to reach the final destination
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 How to Play
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Enter** - Click through the atmospheric landing page
+2. **Solve Puzzles** - Start with puzzle #1, unlock the rest sequentially
+3. **Get Hints** - Click the hidden skull button (appears after 3 puzzles solved)
+4. **Escape** - Complete all 12 puzzles to unlock the escape portal
 
-Follow these steps:
+## 🛠️ Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+- React 18 + TypeScript + Vite
+- Tailwind CSS with custom horror theme
+- Supabase (Lovable Cloud backend)
+- Lovable AI (Google Gemini for hints)
+- Zustand state management
+- Lucide React icons
+
+## 📦 Local Development
+
+\`\`\`bash
+# Clone and install
 git clone <YOUR_GIT_URL>
+cd 404-souls
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start dev server
 npm run dev
-```
+\`\`\`
 
-**Edit a file directly in GitHub**
+## 🎯 SEO Optimized
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Complete meta tags for social sharing
+- Open Graph + Twitter Cards
+- Semantic HTML structure
+- Custom favicon
+- Optimized descriptions and keywords
 
-**Use GitHub Codespaces**
+## 📄 License
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Built with Lovable - [lovable.dev](https://lovable.dev)
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+**⚠️ Warning**: Contains horror elements, jump scares, and dark themes. Not for young children.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/3e1927b2-6b9b-4656-b436-cc559672515f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Enter if you dare... 💀**
