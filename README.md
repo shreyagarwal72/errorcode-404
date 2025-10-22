@@ -6,7 +6,7 @@ A terrifying browser-based horror puzzle game where players must solve cryptic r
 
 ## 🎮 Play Now
 
-**Live Demo**: [404souls.Nextup.app](https://code-404-sandy.vercel.app/)
+**Live Demo**: [404souls](https://code-404-sandy.vercel.app/)
 
 ## Game Overview
 
