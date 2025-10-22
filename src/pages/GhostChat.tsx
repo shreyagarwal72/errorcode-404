@@ -50,7 +50,10 @@ const GhostChat = () => {
         body: { messages: [...messages, userMessage] }
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Edge function error:', error);
+        throw error;
+      }
 
       if (data?.response) {
         setMessages((prev) => [
@@ -58,12 +61,29 @@ const GhostChat = () => {
           { role: 'assistant', content: data.response }
         ]);
         incrementGhostConversations();
+      } else if (data?.error) {
+        throw new Error(data.error);
       }
-    } catch (error) {
-      console.error('Error:', error);
+    } catch (error: any) {
+      console.error('Full error:', error);
+      
+      let errorTitle = "Connection Lost";
+      let errorDescription = "The spirit's voice fades into darkness...";
+      
+      if (error?.message?.includes('rate limit') || error?.message?.includes('429')) {
+        errorTitle = "Too Many Whispers";
+        errorDescription = "The spirits need time to rest. Try again in a moment...";
+      } else if (error?.message?.includes('payment') || error?.message?.includes('402')) {
+        errorTitle = "The Spirits Demand Payment";
+        errorDescription = "Add credits to continue communicating with the dead...";
+      } else if (error?.message?.includes('LOVABLE_API_KEY')) {
+        errorTitle = "Dark Magic Misconfigured";
+        errorDescription = "The ritual cannot be completed. Contact the realm keeper.";
+      }
+      
       toast({
-        title: "Connection Lost",
-        description: "The spirit's voice fades...",
+        title: errorTitle,
+        description: errorDescription,
         variant: "destructive",
       });
     } finally {
@@ -101,30 +121,33 @@ const GhostChat = () => {
             </p>
           </div>
 
-          <Card className="h-[500px] flex flex-col bg-card/50 backdrop-blur border-2 border-border shadow-[0_0_30px_rgba(168,85,247,0.2)]">
+          <Card className="h-[500px] flex flex-col bg-card/80 backdrop-blur border-2 border-primary/30 shadow-[0_0_40px_rgba(255,0,0,0.2)]">
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((message, index) => (
                 <div
                   key={index}
                   className={`flex ${
                     message.role === 'user' ? 'justify-end' : 'justify-start'
-                  }`}
+                  } animate-fade-in`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-lg p-4 ${
+                    className={`max-w-[80%] rounded-lg p-4 shadow-lg ${
                       message.role === 'user'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-secondary text-secondary-foreground'
+                        ? 'bg-primary/90 text-primary-foreground border border-primary shadow-[0_0_15px_rgba(255,0,0,0.3)]'
+                        : 'bg-secondary/90 text-secondary-foreground border border-secondary/50 shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-pulse-slow'
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    <p className="text-sm whitespace-pre-wrap font-creepster">{message.content}</p>
                   </div>
                 </div>
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-secondary text-secondary-foreground rounded-lg p-4">
-                    <p className="text-sm animate-pulse">The spirit is thinking...</p>
+                  <div className="bg-secondary/90 text-secondary-foreground rounded-lg p-4 border border-secondary/50 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                    <div className="flex items-center gap-2">
+                      <Ghost className="h-4 w-4 animate-float" />
+                      <p className="text-sm animate-pulse font-creepster">The spirit whispers from beyond...</p>
+                    </div>
                   </div>
                 </div>
               )}

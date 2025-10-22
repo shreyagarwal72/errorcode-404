@@ -1,51 +1,53 @@
 import { useEffect, useRef, useState } from 'react';
+import { AudioUnmuteOverlay } from './AudioUnmuteOverlay';
 
 export const GlobalAudio = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
 
   useEffect(() => {
+    const permission = localStorage.getItem('audio-permission');
+    if (permission === 'granted') {
+      setShowOverlay(false);
+    } else if (permission === 'denied') {
+      setShowOverlay(false);
+      return;
+    }
+  }, []);
+
+  const initAudio = () => {
     if (!audioRef.current) {
       audioRef.current = new Audio('/sounds/ambient.wav');
       audioRef.current.loop = true;
-      audioRef.current.volume = 0.15;
+      audioRef.current.volume = 0.2;
     }
+  };
 
-    const playAudio = async () => {
-      try {
-        await audioRef.current?.play();
+  const handleUnmute = async () => {
+    initAudio();
+    try {
+      if (audioRef.current && !isPlaying) {
+        await audioRef.current.play();
         setIsPlaying(true);
-      } catch (error) {
-        console.log('Autoplay blocked, waiting for user interaction');
       }
-    };
+    } catch (error) {
+      console.error('Audio playback failed:', error);
+    }
+  };
 
-    const handleInteraction = () => {
-      if (!isPlaying && audioRef.current) {
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-        }).catch(console.error);
-      }
-    };
-
-    playAudio();
-
-    // Add multiple event listeners to catch any user interaction
-    const events = ['click', 'touchstart', 'keydown'];
-    events.forEach(event => {
-      document.addEventListener(event, handleInteraction, { once: true });
-    });
-
+  useEffect(() => {
     return () => {
-      events.forEach(event => {
-        document.removeEventListener(event, handleInteraction);
-      });
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
       }
     };
-  }, [isPlaying]);
+  }, []);
 
-  return null;
+  return (
+    <>
+      {showOverlay && <AudioUnmuteOverlay onUnmute={handleUnmute} />}
+    </>
+  );
 };
