@@ -18,11 +18,10 @@ export const AudioUnmuteOverlay = ({ onUnmute }: AudioUnmuteOverlayProps) => {
     }
   }, [onUnmute]);
 
-  const handleUnmute = () => {
-    localStorage.setItem('audio-permission', 'granted');
+  const handleUnmute = async () => {
     setHasInteracted(true);
+    await onUnmute();
     setShow(false);
-    onUnmute();
   };
 
   const handleMute = () => {

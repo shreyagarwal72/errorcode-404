@@ -28,8 +28,11 @@ export const GlobalAudio = () => {
     initAudio();
     try {
       if (audioRef.current && !isPlaying) {
+        localStorage.setItem('audio-permission', 'granted');
+        setShowOverlay(false);
         await audioRef.current.play();
         setIsPlaying(true);
+        console.log('Audio started successfully');
       }
     } catch (error) {
       console.error('Audio playback failed:', error);
