@@ -115,12 +115,30 @@ const Landing = () => {
           <p className="text-2xl md:text-3xl text-gray-300 font-creepster animate-flicker">
             Enter the Realm of Lost Pages
           </p>
-          <p className="text-base md:text-lg text-gray-500 font-creepster max-w-md mx-auto animate-fade-in">
-            Solve cryptic puzzles... Speak with spirits... Escape if you can...
-          </p>
+          
+          {/* Horror Story */}
+          <div className="max-w-2xl mx-auto text-left space-y-3 p-6 bg-black/50 border border-red-900/30 rounded-lg animate-fade-in backdrop-blur-sm">
+            <p className="text-sm md:text-base text-gray-400 font-creepster leading-relaxed">
+              They say when a webpage dies, its soul lingers in the void between servers. 
+              This is where the 404s dwell—lost, forgotten, screaming into the digital darkness.
+            </p>
+            <p className="text-sm md:text-base text-gray-400 font-creepster leading-relaxed">
+              You clicked a broken link. Now you are here. Trapped. 
+              The spirits whisper of twelve puzzles—twelve keys to freedom. 
+              Solve them all, and the portal home appears.
+            </p>
+            <p className="text-sm md:text-base text-red-500/80 font-creepster leading-relaxed animate-pulse">
+              But beware... others have tried to escape. Their souls still wander these halls, 
+              watching... waiting... Some say the puzzles themselves are alive.
+            </p>
+            <p className="text-xs md:text-sm text-gray-600 font-creepster text-center italic mt-4">
+              Will you join the 404 souls... or escape their fate?
+            </p>
+          </div>
+          
           <div className="flex gap-4 justify-center items-center text-red-600/50 animate-float">
             <Skull className="h-4 w-4" />
-            <span className="text-sm font-creepster">12 Souls Trapped</span>
+            <span className="text-sm font-creepster">12 Souls Trapped Forever</span>
             <Skull className="h-4 w-4" />
           </div>
         </div>

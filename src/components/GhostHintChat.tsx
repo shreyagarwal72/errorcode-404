@@ -65,12 +65,18 @@ export const GhostHintChat = () => {
       let errorTitle = "Connection Lost";
       let errorDescription = "The spirit fades into darkness...";
       
-      if (error?.message?.includes('rate limit') || error?.message?.includes('429')) {
+      const errorMsg = error?.message?.toLowerCase() || '';
+      const errorStr = JSON.stringify(error).toLowerCase();
+      
+      if (errorMsg.includes('rate limit') || errorMsg.includes('429') || errorStr.includes('429')) {
         errorTitle = "Too Many Whispers";
-        errorDescription = "The spirits need rest. Wait a moment...";
-      } else if (error?.message?.includes('payment') || error?.message?.includes('402')) {
-        errorTitle = "The Spirits Demand Payment";
-        errorDescription = "Add credits to continue...";
+        errorDescription = "The spirits are overwhelmed. Please wait before asking again...";
+      } else if (errorMsg.includes('payment') || errorMsg.includes('402') || errorStr.includes('402')) {
+        errorTitle = "The Spirits Demand Tribute";
+        errorDescription = "The ghostly realm requires payment to continue...";
+      } else if (errorMsg.includes('lovable_api_key') || errorMsg.includes('not configured')) {
+        errorTitle = "The Portal Is Sealed";
+        errorDescription = "The spiritual connection cannot be established...";
       }
       
       toast({
