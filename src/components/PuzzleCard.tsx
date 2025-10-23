@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Puzzle } from '@/data/puzzles';
 import { useGameState } from '@/hooks/useGameState';
-import { CheckCircle2, HelpCircle, Lock } from 'lucide-react';
+import { CheckCircle2, Lock } from 'lucide-react';
 
 interface PuzzleCardProps {
   puzzle: Puzzle;
@@ -13,7 +13,6 @@ interface PuzzleCardProps {
 
 export const PuzzleCard = ({ puzzle }: PuzzleCardProps) => {
   const [answer, setAnswer] = useState('');
-  const [showHint, setShowHint] = useState(false);
   const { toast } = useToast();
   const { solvedPuzzles, addSolvedPuzzle } = useGameState();
   
@@ -86,38 +85,18 @@ export const PuzzleCard = ({ puzzle }: PuzzleCardProps) => {
         </p>
         
         {!isSolved && (
-          <>
-            <div className="flex gap-2">
-              <Input
-                value={answer}
-                onChange={(e) => setAnswer(e.target.value)}
-                placeholder="Enter your answer..."
-                onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
-                className="bg-background/50 border-border focus:border-primary transition-colors"
-              />
-              <Button onClick={handleSubmit} variant="default" className="shadow-[0_0_15px_rgba(255,0,0,0.3)]">
-                Submit
-              </Button>
-            </div>
-            
-            <div className="space-y-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowHint(!showHint)}
-                className="w-full hover:bg-muted/50"
-              >
-                <HelpCircle className="mr-2 h-4 w-4" />
-                {showHint ? 'Hide Hint' : 'Show Hint'}
-              </Button>
-              
-              {showHint && (
-                <p className="text-sm text-muted-foreground italic bg-muted/70 p-3 rounded-md border border-primary/20 animate-fade-in">
-                  💡 {puzzle.hint}
-                </p>
-              )}
-            </div>
-          </>
+          <div className="flex gap-2">
+            <Input
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              placeholder="Enter your answer..."
+              onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
+              className="bg-background/50 border-border focus:border-primary transition-colors"
+            />
+            <Button onClick={handleSubmit} variant="default" className="shadow-[0_0_15px_rgba(255,0,0,0.3)]">
+              Submit
+            </Button>
+          </div>
         )}
         
         {isSolved && (
