@@ -8,9 +8,10 @@ import { useNavigate } from 'react-router-dom';
 const Escape = () => {
   const navigate = useNavigate();
   const { solvedPuzzles, setHasEscaped } = useGameState();
-  const [countdown, setCountdown] = useState(60);
+  const [countdown, setCountdown] = useState(10);
   const [shake, setShake] = useState(false);
   const [showCrash, setShowCrash] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
   
   const canEscape = solvedPuzzles.length === puzzles.length;
 
@@ -30,7 +31,7 @@ const Escape = () => {
           setShowCrash(true);
           return 0;
         }
-        if (prev <= 10) {
+        if (prev <= 5) {
           setShake(true);
           setTimeout(() => setShake(false), 200);
         }
@@ -87,6 +88,33 @@ const Escape = () => {
         </div>
 
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-red-950/30 to-black pointer-events-none" />
+      </div>
+    );
+  }
+
+  // Exit animation overlay
+  if (isExiting) {
+    return (
+      <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
+        <div className="text-center space-y-6 animate-scale-in">
+          <div className="relative">
+            <DoorOpen className="h-48 w-48 text-accent mx-auto animate-pulse drop-shadow-[0_0_120px_rgba(234,179,8,1)]" />
+            <div className="absolute inset-0 bg-accent/30 rounded-full blur-[150px] animate-pulse-glow" />
+          </div>
+          <p className="text-4xl font-nosifer text-accent animate-pulse">
+            ESCAPING...
+          </p>
+          <div className="flex gap-2 justify-center">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className="w-4 h-4 bg-accent rounded-full animate-bounce"
+                style={{ animationDelay: `${i * 0.2}s` }}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="absolute inset-0 bg-white opacity-0 animate-[fade-in_2s_ease-in_forwards]" />
       </div>
     );
   }
@@ -159,13 +187,13 @@ const Escape = () => {
 
           {/* Countdown with intensity */}
           <div className="space-y-3">
-            <div className={`text-8xl font-nosifer animate-pulse drop-shadow-[0_0_100px_rgba(255,0,0,1)] transition-colors duration-300 ${countdown <= 10 ? 'text-red-600 animate-shake' : 'text-accent'}`}>
+            <div className={`text-8xl font-nosifer animate-pulse drop-shadow-[0_0_100px_rgba(255,0,0,1)] transition-colors duration-300 ${countdown <= 5 ? 'text-red-600 animate-shake' : 'text-accent'}`}>
               {countdown}
             </div>
             <p className="text-xl font-creepster text-muted-foreground animate-flicker">
-              {countdown > 10 ? 'Seconds to escape safely...' : 'SYSTEM FAILURE IN...'}
+              {countdown > 5 ? 'Seconds to escape safely...' : 'SYSTEM FAILURE IN...'}
             </p>
-            {countdown <= 10 && (
+            {countdown <= 5 && (
               <p className="text-2xl font-nosifer text-red-500 animate-pulse">
                 GET OUT! GET OUT! GET OUT!
               </p>
@@ -174,12 +202,17 @@ const Escape = () => {
 
           {/* Exit Button */}
           <div className="pt-4">
-            <a
-              href="https://nextup-archive.vercel.app"
+            <button
+              onClick={() => {
+                setIsExiting(true);
+                setTimeout(() => {
+                  window.location.href = "https://nextup-archive.vercel.app";
+                }, 2000);
+              }}
               className="inline-block px-8 py-4 bg-accent hover:bg-accent/80 text-black font-nosifer text-xl shadow-[0_0_40px_rgba(234,179,8,0.8)] hover:shadow-[0_0_60px_rgba(234,179,8,1)] transition-all animate-pulse"
             >
               🚪 ESCAPE TO SAFETY
-            </a>
+            </button>
           </div>
 
           {/* Animated dividers */}
