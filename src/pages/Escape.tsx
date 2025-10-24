@@ -9,39 +9,37 @@ const Escape = () => {
   const navigate = useNavigate();
   const { solvedPuzzles, setHasEscaped } = useGameState();
   const [countdown, setCountdown] = useState(60);
-  const [isEscaping, setIsEscaping] = useState(false);
   const [shake, setShake] = useState(false);
   const [showCrash, setShowCrash] = useState(false);
   
   const canEscape = solvedPuzzles.length === puzzles.length;
 
   useEffect(() => {
-    if (canEscape && !isEscaping) {
-      setHasEscaped(true);
-      setIsEscaping(true);
-      
-      const escapeSound = new Audio('/sounds/horror-atmosphere.mp3');
-      escapeSound.volume = 0.4;
-      escapeSound.play().catch(() => {});
+    if (!canEscape) return;
+    
+    setHasEscaped(true);
+    
+    const escapeSound = new Audio('/sounds/horror-atmosphere.mp3');
+    escapeSound.volume = 0.4;
+    escapeSound.play().catch(() => {});
 
-      const timer = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            setShowCrash(true);
-            return 0;
-          }
-          if (prev <= 10) {
-            setShake(true);
-            setTimeout(() => setShake(false), 200);
-          }
-          return prev - 1;
-        });
-      }, 1000);
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          setShowCrash(true);
+          return 0;
+        }
+        if (prev <= 10) {
+          setShake(true);
+          setTimeout(() => setShake(false), 200);
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-      return () => clearInterval(timer);
-    }
-  }, [canEscape, setHasEscaped, isEscaping]);
+    return () => clearInterval(timer);
+  }, [canEscape, setHasEscaped]);
 
   if (!canEscape) {
     navigate('/home');
