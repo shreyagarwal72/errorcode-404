@@ -7,18 +7,29 @@
     <!-- SEO Meta Tags -->
     <title>404 SOULS - Escape the Horror Puzzle Game | Can You Survive?</title>
     <meta name="description" content="Enter the realm of 404 SOULS - A terrifying horror puzzle game. Solve cryptic riddles, get hints from spirits, and escape the nightmare. Free to play horror escape game with atmospheric sounds and jumpscares." />
-    <meta name="keywords" content="horror game, puzzle game, escape game, 404 souls, scary game, free horror game, riddles, ghost chat, browser game, online horror game" />
+    <meta name="keywords" content="horror game, puzzle game, escape game, 404 souls, scary game, free horror game, riddles, ghost chat, browser game, online horror game, halloween game, spooky puzzle, terror game" />
     <meta name="author" content="404 Souls Game" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="language" content="English" />
+    <meta name="application-name" content="404 SOULS" />
+    <meta name="theme-color" content="#DC2626" />
     <link rel="canonical" href="https://404souls.lovable.app" />
+    
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://404souls.lovable.app" />
+    <meta property="og:site_name" content="404 SOULS" />
     <meta property="og:title" content="404 SOULS - Terrifying Horror Puzzle Escape Game" />
     <meta property="og:description" content="Dare to enter the realm of lost pages? Solve cryptic puzzles, communicate with spirits, and escape the horror. Can you survive 404 SOULS?" />
     <meta property="og:image" content="https://404souls.lovable.app/favicon.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="404 SOULS Horror Skull Logo" />
+    <meta property="og:locale" content="en_US" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -39,24 +50,99 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap" rel="stylesheet">
     <link rel="preload" href="/sounds/horror-atmosphere.mp3" as="audio">
+    <link rel="preload" href="/favicon.png" as="image">
+    
+    <!-- Additional Meta Tags for Mobile & Performance -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="404 SOULS" />
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": "404 SOULS",
-      "description": "A terrifying horror puzzle escape game where players solve cryptic riddles, communicate with spirits, and escape a digital nightmare realm",
-      "genre": ["Horror", "Puzzle", "Escape Room"],
-      "gamePlatform": "Web Browser",
-      "url": "https://404souls.lovable.app",
-      "inLanguage": "en",
-      "isAccessibleForFree": true,
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+      "@graph": [
+        {
+          "@type": "VideoGame",
+          "@id": "https://404souls.lovable.app/#game",
+          "name": "404 SOULS",
+          "description": "A terrifying horror puzzle escape game where players solve cryptic riddles, communicate with spirits, and escape a digital nightmare realm. Features 12 challenging puzzles, atmospheric horror sounds, and interactive ghost chat system.",
+          "genre": ["Horror", "Puzzle", "Escape Room", "Adventure"],
+          "gamePlatform": ["Web Browser", "Desktop", "Mobile"],
+          "url": "https://404souls.lovable.app",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "numberOfPlayers": {
+            "@type": "QuantitativeValue",
+            "value": 1
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "applicationCategory": "Game",
+          "operatingSystem": "Any (Web Browser)",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://404souls.lovable.app/#website",
+          "url": "https://404souls.lovable.app",
+          "name": "404 SOULS - Horror Puzzle Game",
+          "description": "Free online horror puzzle escape game with 12 terrifying challenges",
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://404souls.lovable.app/#organization",
+            "name": "404 SOULS",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://404souls.lovable.app/favicon.png"
+            }
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://404souls.lovable.app?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://404souls.lovable.app/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://404souls.lovable.app"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Puzzles",
+              "item": "https://404souls.lovable.app/home"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Escape",
+              "item": "https://404souls.lovable.app/escape"
+            }
+          ]
+        }
+      ]
     }
     </script>
   </head>

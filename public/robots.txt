@@ -1,8 +1,18 @@
+# 404 SOULS - Horror Puzzle Game
+# Robots.txt for SEO optimization
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Specific search engines
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +20,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Sitemap location
+Sitemap: https://404souls.lovable.app/sitemap.xml

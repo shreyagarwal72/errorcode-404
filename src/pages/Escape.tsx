@@ -4,6 +4,7 @@ import { puzzles } from '@/data/puzzles';
 import { DoorOpen, Skull } from 'lucide-react';
 import { JumpScare } from '@/components/JumpScare';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Escape = () => {
   const navigate = useNavigate();
@@ -121,8 +122,16 @@ const Escape = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Escape Portal - Final Countdown | 404 SOULS</title>
+        <meta name="description" content="You've solved all 12 puzzles! The escape portal is open but the realm is collapsing. Can you escape 404 SOULS before it's too late? The countdown has begun." />
+        <meta property="og:title" content="Escape the Nightmare - 404 SOULS Final Portal" />
+        <meta property="og:description" content="The escape portal is open! But the realm collapses around you. Will you make it out of 404 SOULS alive?" />
+        <link rel="canonical" href="https://404souls.lovable.app/escape" />
+      </Helmet>
+
       <JumpScare />
-      <div className={`min-h-screen bg-black relative overflow-hidden flex items-center justify-center transition-all duration-500 ${shake ? 'animate-shake' : ''}`}>
+      <main className={`min-h-screen bg-black relative overflow-hidden flex items-center justify-center transition-all duration-500 ${shake ? 'animate-shake' : ''}`}>
         {/* Animated blood-red background */}
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/40 via-black to-red-950/40 animate-pulse" />
         
@@ -224,7 +233,7 @@ const Escape = () => {
 
         {/* Vignette overlay */}
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black pointer-events-none opacity-80" />
-      </div>
+      </main>
     </>
   );
 };

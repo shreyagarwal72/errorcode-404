@@ -7,6 +7,7 @@ import { JumpScare } from '@/components/JumpScare';
 import { HintButton } from '@/components/HintButton';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import { Helmet } from 'react-helmet-async';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -27,9 +28,17 @@ const Index = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Horror Puzzles - Solve 12 Cryptic Riddles | 404 SOULS Game</title>
+        <meta name="description" content="Challenge yourself with 12 terrifying horror puzzles in 404 SOULS. Solve cryptic riddles, unlock ghost hints, and escape the digital nightmare. Progress: {solvedPuzzles.length}/12 puzzles completed." />
+        <meta property="og:title" content="404 SOULS Horror Puzzles - Can You Escape?" />
+        <meta property="og:description" content="Test your wit against 12 cryptic horror puzzles. Unlock hints from spirits and escape the realm of 404 SOULS." />
+        <link rel="canonical" href="https://404souls.lovable.app/home" />
+      </Helmet>
+
       <JumpScare />
       <HintButton isUnlocked={isHintUnlocked} />
-      <div className="min-h-screen bg-background p-6 relative overflow-hidden vignette">
+      <main className="min-h-screen bg-background p-6 relative overflow-hidden vignette">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10 animate-pulse-slow" />
         
         <div className="max-w-4xl mx-auto space-y-8 z-10 relative">
@@ -78,7 +87,7 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 };

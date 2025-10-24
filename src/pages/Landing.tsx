@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Skull, Ghost, Flame } from 'lucide-react';
 
 const Landing = () => {
@@ -29,7 +30,16 @@ const Landing = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-black flex items-center justify-center relative overflow-hidden cursor-pointer transition-all duration-1000 ${fadeOut ? 'opacity-0 scale-95' : ''}`} onClick={handleEnter}>
+    <>
+      <Helmet>
+        <title>404 SOULS - Enter the Horror Puzzle Nightmare | Free Browser Game</title>
+        <meta name="description" content="Welcome to 404 SOULS, a terrifying horror puzzle escape game. Enter the realm of lost pages where 404 errors become your nightmare. Solve 12 cryptic puzzles to escape. Free to play now." />
+        <meta property="og:title" content="404 SOULS - Enter the Horror Puzzle Nightmare" />
+        <meta property="og:description" content="Dare to enter the realm of lost pages? Click to begin your terrifying journey through 404 SOULS horror puzzle game." />
+        <link rel="canonical" href="https://404souls.lovable.app/" />
+      </Helmet>
+
+      <main className={`min-h-screen bg-black flex items-center justify-center relative overflow-hidden cursor-pointer transition-all duration-1000 ${fadeOut ? 'opacity-0 scale-95' : ''}`} onClick={handleEnter}>
       {/* Animated background with blood effect */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-red-950/30 to-black animate-pulse" />
@@ -165,7 +175,8 @@ const Landing = () => {
       
       {/* Enhanced vignette effect */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black pointer-events-none opacity-90" />
-    </div>
+    </main>
+    </>
   );
 };
 

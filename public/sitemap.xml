@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Landing Page -->
+  <url>
+    <loc>https://404souls.lovable.app/</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://404souls.lovable.app/favicon.png</image:loc>
+      <image:title>404 SOULS - Horror Puzzle Game</image:title>
+      <image:caption>Enter the terrifying realm of 404 SOULS horror puzzle game</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Main Game Page -->
+  <url>
+    <loc>https://404souls.lovable.app/home</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Escape Page -->
+  <url>
+    <loc>https://404souls.lovable.app/escape</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>
